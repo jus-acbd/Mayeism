@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>马烨主义 第42条 - 翻书包柜时必须留下好机会</title>
+    <title>马烨主义（修订） 第{display_id}条 - {title}</title>
     <style>
-
+        /* 基础重置 */
         * {
             box-sizing: border-box;
             font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
         }
-        header {
-            color: white;
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
         }
+        
         /* 导航栏 */
         .navbar {
             background: linear-gradient(135deg, #fa0f07 0%, #eeff00 100%);
@@ -35,51 +40,16 @@
             text-decoration: none;
             margin-left: 20px;
         }
-
-        header {
-            background-color: #2c3e50;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-            line-height: 1.6;
-            margin: 0 auto;
-        }
-        
-        /* 导航栏 */
-        .navbar {
-            background: linear-gradient(135deg, #fa0f07 0%, #eeff00 100%);
-            padding: 15px 30px;
-            display: flex;
-            align-items: center;
-            color: white;
-            margin: 0%;
-            width: 100%;
-        }
-        
-        .nav-brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-decoration: none;
-            color: white;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-        }
         
         /* 面包屑导航 */
         .breadcrumb {
-            background-color: #f1f8ff;
-            padding: 15px 30px;
-            font-size: 0.9rem;
+            background-color: #dfd4d4;
+            color: rgb(0, 0, 0);
+            padding: 15px 20px;
+            display: flex;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         
         .breadcrumb a {
@@ -89,7 +59,9 @@
         
         /* 条文内容区域 */
         .article-container {
-            padding: 30px;
+            padding: 40px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .article-header {
@@ -109,6 +81,15 @@
             font-size: 2rem;
             color: #2c3e50;
             margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .article-meta {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
         }
         
         .article-content {
@@ -119,27 +100,59 @@
             margin-bottom: 40px;
         }
         
-        .content-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
+        .content-section {
             margin-bottom: 30px;
         }
         
-        .highlight {
+        .content-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .content-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* 特殊标记 */
+        .special-note {
             background-color: #fff3cd;
-            padding: 15px;
+            padding: 20px;
             border-left: 4px solid #ffc107;
             margin: 20px 0;
             border-radius: 4px;
         }
         
+        .feature-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 15px 0;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "•";
+            color: #fa0f07;
+            font-size: 1.2em;
+            position: absolute;
+            left: 10px;
+        }
+        
         /* 导航按钮 */
-        .article-nav {
+        .nav-buttons {
             display: flex;
             justify-content: space-between;
             margin-top: 40px;
             padding-top: 20px;
             border-top: 1px solid #eee;
+            gap: 15px;
         }
         
         .nav-btn {
@@ -149,6 +162,12 @@
             text-decoration: none;
             border-radius: 6px;
             transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+            flex: 1;
+            max-width: 200px;
         }
         
         .nav-btn:hover {
@@ -158,6 +177,33 @@
         .nav-btn.disabled {
             background-color: #cccccc;
             cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        /* 快速跳转 */
+        .quick-jump {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+            align-items: center;
+        }
+        
+        .jump-input {
+            width: 120px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .jump-btn {
+            padding: 10px 15px;
+            background-color: #db5b34;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
         }
         
         /* 底部 */
@@ -171,6 +217,10 @@
         
         /* 响应式 */
         @media (max-width: 768px) {
+            .article-container {
+                padding: 20px;
+            }
+            
             .article-number {
                 font-size: 2.5rem;
             }
@@ -182,11 +232,46 @@
             .article-content {
                 padding: 20px;
             }
+            
+            .nav-buttons {
+                flex-direction: column;
+            }
+            
+            .nav-btn {
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .quick-jump {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .jump-input {
+                width: 100%;
+            }
         }
-        @media (min-width: 768px) {
+        
+        @media (max-width: 480px) {
             .navbar {
-                justify-content: space-between;
-                width:100%;
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-links {
+                display: flex;
+                gap: 15px;
+                margin-left: 0;
+            }
+            
+            .nav-links a {
+                margin-left: 0;
+            }
+            
+            .breadcrumb {
+                padding: 10px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -194,87 +279,142 @@
 <body>
     <!-- 导航栏 -->
     <nav class="navbar">
-        <a href="../index.html" class="nav-brand">马烨主义</a>
+        <a href="../index_revised.html" class="nav-brand">马烨主义（修订版）</a>
         <div class="nav-links">
             <a href="../index.html">首页</a>
-            <a href="#all">全部条文</a>
+            <a href="../index.html">原始版本</a>
         </div>
     </nav>
     
     <!-- 面包屑导航 -->
     <div class="breadcrumb">
         <a href="../index.html">首页</a> &gt; 
-        <a href="../index.html">列表</a> &gt; 
-        <span>第42条</span>
+        <span>第042条</span>
     </div>
     
-    <!-- 条文内容 -->
+    <!-- 快速跳转 -->
     <div class="article-container">
+        <div class="quick-jump">
+            <input type="number" id="jumpInput" class="jump-input" placeholder="输入编号 (1-91)" min="1" max="91">
+            <button class="jump-btn" onclick="jumpToArticle()">快速跳转</button>
+        </div>
+        
         <div class="article-header">
-            <div class="article-number">第42条</div>
-            <h1 class="article-title">翻书包柜时必须留下好机会</h1>
-            <div style="color: #7f8c8d;">分类：日常行为 | 最后更新：2026-01-09</div>
+            <div class="article-number">第042条</div>
+            <h1 class="article-title">翻书包柜时即使不想也会留下好机会</h1>
+            <div class="article-meta">
+                <span>📁 分类：日常行为</span>
+                <span>📅 更新：2026-01-14</span>
+                <span>🔢 编号：042/091</span>
+            </div>
         </div>
         
         <div class="article-content">
-            <div class="content-text">
-                <p><strong>内容：</strong>翻书包柜时必须留下好机会</p><p><strong>解读：</strong>本条为强制性要求，所有马烨主义者必须严格遵守。</p>
+            <div class="content-section">
+                <h3>📋 内容</h3>
+                <div class="content-text">翻书包柜时即使不想也会留下好机会。</div>
             </div>
             
             
             
-            <div style="margin-top: 40px; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
-                <h3 style="margin-bottom: 15px; color: #2c3e50;">📝 解读</h3>
-                <p>本条是马烨主义的重要组成部分，体现了马烨主义的核心思想和实践要求。</p>
+            
+            
+            <div class="content-section">
+                <h3>📝 解读</h3>
+                <div class="content-text">
+                </div>
             </div>
         </div>
         
         <!-- 导航按钮 -->
-        <div class="article-nav">
-            <a href="41.html" class="nav-btn ">← 上一条</a>
+        <div class="nav-buttons">
+            <a href="41.html" class="nav-btn">← 上一条</a>
             <a href="../index.html" class="nav-btn">返回列表</a>
-            <a href="43.html" class="nav-btn ">下一条 →</a>
+            <a href="43.html" class="nav-btn">下一条→</a>
         </div>
     </div>
     
     <!-- 底部 -->
     <footer>
-        <p>马烨主义汇总 © 2026 | 共91条核心条文</p>
-        <p style="margin-top: 10px; font-size: 0.9rem;">全世界的马烨主义者联合起来</p>
+        <p>马烨主义（修订版）汇总 © 2026 | 第042条/共91条</p>
+        <p style="margin-top: 5px;">修订日期：2026年1月14日 | 支持输入 1、01、001 格式跳转</p>
+        <p style="margin-top: 5px;">页面文件：42.html</p>
     </footer>
     
     <script>
-        // 高亮标记的内容
-        function highlightMarkedContent() {
-            const contentElement = document.querySelector('.content-text');
-            if (contentElement) {
-                // 替换所有[内容]为高亮格式
-                contentElement.innerHTML = contentElement.innerHTML.replace(
-                    /\[(.*?)\]/g, 
-                    '<span style="background-color: #ffeb3b; padding: 2px 5px; border-radius: 3px;">$1</span>'
-                );
+        // 快速跳转功能
+        function jumpToArticle() {
+            const input = document.getElementById('jumpInput');
+            let num = parseInt(input.value);
+            
+            if (isNaN(num) || num < 1 || num > 91) {
+                alert('请输入有效的条文编号 (1-91)');
+                input.focus();
+                return;
+            }
+            
+            // 跳转到对应条文
+            if (num !== 42) {
+                window.location.href = num + '.html';
+            } else {
+                alert('当前已经是第' + num + '条');
             }
         }
         
-        // 页面加载完成后执行
-        window.onload = function() {
-            highlightMarkedContent();
+        // 监听输入框回车键
+        document.getElementById('jumpInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                jumpToArticle();
+            }
+        });
+        
+        // 键盘导航
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft' && {has_prev}) {
+                window.location.href = '{prev_file}';
+            } else if (e.key === 'ArrowRight' && {has_next}) {
+                window.location.href = '{next_file}';
+            } else if (e.key === 'Home') {
+                window.location.href = '1.html';
+            } else if (e.key === 'End') {
+                window.location.href = '91.html';
+            }
+        });
+        
+        // 自动识别禁止性和建议性词汇
+        document.addEventListener('DOMContentLoaded', function() {
+            const content = document.querySelector('.content-text');
+            const prohibitions = ['不要', '禁止', '避免', '不能', '别', '不宜', '禁止', '禁止使用'];
+            const recommendations = ['应该', '可以', '建议', '尽量', '必须', '应当'];
             
-            // 添加上下键盘导航
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowLeft') {
-                    const prevBtn = document.querySelector('a[href*="prev"]');
-                    if (prevBtn && !prevBtn.classList.contains('disabled')) {
-                        window.location.href = prevBtn.href;
-                    }
-                } else if (e.key === 'ArrowRight') {
-                    const nextBtn = document.querySelector('a[href*="next"]');
-                    if (nextBtn && !nextBtn.classList.contains('disabled')) {
-                        window.location.href = nextBtn.href;
-                    }
+            let hasProhibition = false;
+            let hasRecommendation = false;
+            let prohibitionWords = [];
+            let recommendationWords = [];
+            
+            const text = content.textContent;
+            prohibitions.forEach(word => {
+                if (text.includes(word)) {
+                    hasProhibition = true;
+                    prohibitionWords.push(word);
                 }
             });
-        };
+            
+            recommendations.forEach(word => {
+                if (text.includes(word)) {
+                    hasRecommendation = true;
+                    recommendationWords.push(word);
+                }
+            });
+            
+            
+            
+            // 自动聚焦跳转输入框
+            document.getElementById('jumpInput').focus();
+            
+            // 页面加载时自动滚动到顶部
+            window.scrollTo(0, 0);
+        });
     </script>
 </body>
 </html>

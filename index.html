@@ -55,7 +55,7 @@
             background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
-            margin: 0 auto;
+            margin: 30;
         }
         
         /* 头部样式 */
@@ -146,9 +146,24 @@
             font-size: 1rem;
         }
         
-        /* 分类区域 */
-        .categories {
+        /* 分类统计 */
+        .category-stats {
             margin: 40px 0;
+        }
+        
+        .category-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .category-badge {
+            background: linear-gradient(135deg, #fa0f07 0%, #db5b34 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
         }
         
         h2 {
@@ -157,49 +172,6 @@
             padding-left: 15px;
             margin-bottom: 25px;
             font-size: 1.8rem;
-        }
-        
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        
-        .category-card {
-            background: white;
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .category-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-        }
-        
-        .category-title {
-            color: #2c3e50;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .category-title::before {
-            content: "📚";
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .category-count {
-            background-color: #ecf0f1;
-            color: #7f8c8d;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: inline-block;
-            margin-top: 10px;
         }
         
         /* 条文列表 */
@@ -232,6 +204,7 @@
             text-decoration: none;
             color: inherit;
             transition: background-color 0.2s;
+            cursor: pointer;
         }
         
         .article-row:hover {
@@ -247,7 +220,7 @@
         }
         
         .article-number {
-            color: #3498db;
+            color: #fa0f07;
             font-weight: bold;
         }
         
@@ -272,16 +245,8 @@
         
         /* 响应式 */
         @media (max-width: 768px) {
-            header {
-                padding: 30px 20px;
-                margin-bottom: 10px;
-            }
             h1 {
                 font-size: 2.2rem;
-            }
-            
-            .category-grid {
-                grid-template-columns: 1fr;
             }
             
             .article-header, .article-row {
@@ -294,7 +259,6 @@
             
             .search-box input, .search-box button {
                 width: 100%;
-                height: 100%;
                 border-radius: 6px;
                 margin-bottom: 10px;
             }
@@ -310,7 +274,6 @@
             }
             
             .article-header, .article-row {
-                height: auto;
                 grid-template-columns: 1fr;
                 gap: 5px;
             }
@@ -323,9 +286,9 @@
     <header>
         <nav class="navbar">
             <a href="../index.html" class="nav-brand">马烨主义</a>
+            <p><strong>全世界的马烨主义者联合起来</strong></p>
             <div class="nav-links">
                 <a href="../index.html">首页</a>
-                <a href="#all">全部条文</a>
             </div>
         </nav>
         
@@ -351,54 +314,21 @@
             <div class="stat-label">条文总数</div>
         </div>
         <div class="stat-card">
+            <div class="stat-number">9</div>
+            <div class="stat-label">分类数量</div>
+        </div>
+        <div class="stat-card">
             <div class="stat-number">2026</div>
             <div class="stat-label">最新修订</div>
         </div>
         <div class="stat-card">
-            <div class="stat-number">0</div>
-            <div class="stat-label">相关案例</div>
+            <div class="stat-number">9</div>
+            <div class="stat-label">特别条文</div>
         </div>
     </div>
-    <!--
-    <section class="categories">
-        <h2>按分类浏览</h2>
-        <div class="category-grid">
-            <div class="category-card">
-                <div class="category-title">总则与基本原则</div>
-                <p>系统概述、适用范围、基本原则等基础性条文</p>
-                <div class="category-count">12条</div>
-            </div>
-            <div class="category-card">
-                <div class="category-title">权利义务</div>
-                <p>主体权利、义务、责任等相关条文</p>
-                <div class="category-count">24条</div>
-            </div>
-            <div class="category-card">
-                <div class="category-title">执行与实施</div>
-                <p>具体执行程序、实施方法、操作流程</p>
-                <div class="category-count">18条</div>
-            </div>
-            <div class="category-card">
-                <div class="category-title">监督与管理</div>
-                <p>监督机制、管理权限、检查程序</p>
-                <div class="category-count">15条</div>
-            </div>
-            <div class="category-card">
-                <div class="category-title">特殊情形</div>
-                <p>例外情况、特殊处理、临时措施</p>
-                <div class="category-count">9条</div>
-            </div>
-            <div class="category-card">
-                <div class="category-title">附则与其他</div>
-                <p>生效时间、解释权限、未尽事宜</p>
-                <div class="category-count">13条</div>
-            </div>
-        </div>
-    </section>
-    -->
     
-    <!-- 条文列表 -->
-   <div class="category-stats">
+    <!-- 分类统计 -->
+    <div class="category-stats">
         <h2>条文分类</h2>
         <div class="category-badges">
             <span class="category-badge">基本原则 (13条)</span>
@@ -417,478 +347,468 @@
     </div>
     
     <!-- 条文列表 -->
-    <section class="articles-section">
-        <h2>条文列表（共91条）</h2>
-        <div class="article-list">
-            <div class="article-header">
-                <div>编号</div>
-                <div>概览</div>
-                <div>分类</div>
-            </div>
-            
-            <!-- 完整的91条列表 -->
-            <a href="./detail/1.html" class="article-row">
-                <div class="article-number">第001条</div>
-                <div class="article-title">身上所有东西不可以正着带或正着穿</div>
-                <div class="article-category">着装规范</div>
-            </a>
-            <a href="./detail/2.html" class="article-row">
-                <div class="article-number">第002条</div>
-                <div class="article-title">内裤不能穿里面</div>
-                <div class="article-category">着装规范</div>
-            </a>
-            <a href="./detail/3.html" class="article-row">
-                <div class="article-number">第003条</div>
-                <div class="article-title">脖子长度不能少于总身高的99%</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/4.html" class="article-row">
-                <div class="article-number">第004条</div>
-                <div class="article-title">每天必须新建一座度假区</div>
-                <div class="article-category">日常行为</div>
-            </a>
-            <a href="./detail/5.html" class="article-row">
-                <div class="article-number">第005条</div>
-                <div class="article-title">遇事先动手</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/6.html" class="article-row">
-                <div class="article-number">第006条</div>
-                <div class="article-title">玩游戏没钱也氪金</div>
-                <div class="article-category">娱乐活动</div>
-            </a>
-            <a href="./detail/7.html" class="article-row">
-                <div class="article-number">第007条</div>
-                <div class="article-title">四肢不协调</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/8.html" class="article-row">
-                <div class="article-number">第008条</div>
-                <div class="article-title">不能好好贴桌球</div>
-                <div class="article-category">运动能力</div>
-            </a>
-            <a href="./detail/9.html" class="article-row">
-                <div class="article-number">第009条</div>
-                <div class="article-title">毫无运动天赋</div>
-                <div class="article-category">运动能力</div>
-            </a>
-            <a href="./detail/10.html" class="article-row">
-                <div class="article-number">第010条</div>
-                <div class="article-title">作业字体不可以工整</div>
-                <div class="article-category">学习要求</div>
-            </a>
-            <a href="./detail/11.html" class="article-row">
-                <div class="article-number">第011条</div>
-                <div class="article-title">不能一个人单独放学</div>
-                <div class="article-category">社交行为</div>
-            </a>
-            <a href="./detail/12.html" class="article-row">
-                <div class="article-number">第012条</div>
-                <div class="article-title">必须整天和一名同姓泡在一起</div>
-                <div class="article-category">社交行为</div>
-            </a>
-            <a href="./detail/13.html" class="article-row">
-                <div class="article-number">第013条</div>
-                <div class="article-title">必须整天和一名异姓泡在一起</div>
-                <div class="article-category">社交行为</div>
-            </a>
-            <a href="./detail/14.html" class="article-row">
-                <div class="article-number">第014条</div>
-                <div class="article-title">遇事先狡辩</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/15.html" class="article-row">
-                <div class="article-number">第015条</div>
-                <div class="article-title">每天必须说一句上海话</div>
-                <div class="article-category">语言要求</div>
-            </a>
-            <a href="./detail/16.html" class="article-row">
-                <div class="article-number">第016条</div>
-                <div class="article-title">每天必须用上海话骂一次人</div>
-                <div class="article-category">语言要求</div>
-            </a>
-            <a href="./detail/17.html" class="article-row">
-                <div class="article-number">第017条</div>
-                <div class="article-title">每天必须问候一次自己的主队</div>
-                <div class="article-category">日常行为</div>
-            </a>
-            <a href="./detail/18.html" class="article-row">
-                <div class="article-number">第018条</div>
-                <div class="article-title">每天必须问候一次别人的浮木</div>
-                <div class="article-category">社交行为</div>
-            </a>
-            <a href="./detail/19.html" class="article-row">
-                <div class="article-number">第019条</div>
-                <div class="article-title">必须长得像鲁迅</div>
-                <div class="article-category">外貌特征</div>
-            </a>
-            <a href="./detail/20.html" class="article-row">
-                <div class="article-number">第020条</div>
-                <div class="article-title">腰围不能长于1cm，胸围不能小于总身高的100%</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/21.html" class="article-row">
-                <div class="article-number">第021条</div>
-                <div class="article-title">必须大眼睛，大鼻孔</div>
-                <div class="article-category">外貌特征</div>
-            </a>
-            <a href="./detail/22.html" class="article-row">
-                <div class="article-number">第022条</div>
-                <div class="article-title">每天必须听一遍Melody</div>
-                <div class="article-category">娱乐活动</div>
-            </a>
-            <a href="./detail/23.html" class="article-row">
-                <div class="article-number">第023条</div>
-                <div class="article-title">肌肉不可以长在正确的位置</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/24.html" class="article-row">
-                <div class="article-number">第024条</div>
-                <div class="article-title">每天必须和一个人用上海话'册那'互骂</div>
-                <div class="article-category">语言要求</div>
-            </a>
-            <a href="./detail/25.html" class="article-row">
-                <div class="article-number">第025条</div>
-                <div class="article-title">每隔一段时间必须举行拳王争霸赛</div>
-                <div class="article-category">娱乐活动</div>
-            </a>
-            <a href="./detail/26.html" class="article-row">
-                <div class="article-number">第026条</div>
-                <div class="article-title">必须躺在别人怀里</div>
-                <div class="article-category">社交行为</div>
-            </a>
-            <a href="./detail/27.html" class="article-row">
-                <div class="article-number">第027条</div>
-                <div class="article-title">做操时不能拍前面</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/28.html" class="article-row">
-                <div class="article-number">第028条</div>
-                <div class="article-title">必须喜欢一个人，且与ta做同一种运动</div>
-                <div class="article-category">社交行为</div>
-            </a>
-            <a href="./detail/29.html" class="article-row">
-                <div class="article-number">第029条</div>
-                <div class="article-title">遇事先问候对方浮木</div>
-                <div class="article-category">语言要求</div>
-            </a>
-            <a href="./detail/30.html" class="article-row">
-                <div class="article-number">第030条</div>
-                <div class="article-title">运动神经中枢必须瘫痪</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/31.html" class="article-row">
-                <div class="article-number">第031条</div>
-                <div class="article-title">必须双逆足，双逆手，双逆头</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/32.html" class="article-row">
-                <div class="article-number">第032条</div>
-                <div class="article-title">必须又高又帅</div>
-                <div class="article-category">外貌特征</div>
-            </a>
-            <a href="./detail/33.html" class="article-row">
-                <div class="article-number">第033条</div>
-                <div class="article-title">遇事必签条约</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/34.html" class="article-row">
-                <div class="article-number">第034条</div>
-                <div class="article-title">唱歌必跑调</div>
-                <div class="article-category">娱乐活动</div>
-            </a>
-            <a href="./detail/35.html" class="article-row">
-                <div class="article-number">第035条</div>
-                <div class="article-title">必须坐摇摇椅</div>
-                <div class="article-category">日常行为</div>
-            </a>
-            <a href="./detail/36.html" class="article-row">
-                <div class="article-number">第036条</div>
-                <div class="article-title">必须吃对象的零食</div>
-                <div class="article-category">社交行为</div>
-            </a>
-            <a href="./detail/37.html" class="article-row">
-                <div class="article-number">第037条</div>
-                <div class="article-title">必须给对象抄答案</div>
-                <div class="article-category">学习要求</div>
-            </a>
-            <a href="./detail/38.html" class="article-row">
-                <div class="article-number">第038条</div>
-                <div class="article-title">被打必须说'让我还一下'</div>
-                <div class="article-category">语言要求</div>
-            </a>
-            <a href="./detail/39.html" class="article-row">
-                <div class="article-number">第039条</div>
-                <div class="article-title">马烨永远少女</div>
-                <div class="article-category">基本原则</div>
-            </a>
-            <a href="./detail/40.html" class="article-row">
-                <div class="article-number">第040条</div>
-                <div class="article-title">马烨尤思程简称'烨思'（yes）</div>
-                <div class="article-category">基本原则</div>
-            </a>
-            <a href="./detail/41.html" class="article-row">
-                <div class="article-number">第041条</div>
-                <div class="article-title">遇事先跳舞</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/42.html" class="article-row">
-                <div class="article-number">第042条</div>
-                <div class="article-title">翻书包柜时必须留下好机会</div>
-                <div class="article-category">日常行为</div>
-            </a>
-            <a href="./detail/43.html" class="article-row">
-                <div class="article-number">第043条</div>
-                <div class="article-title">做数学题必须解出且正确且只能用手指比划几下</div>
-                <div class="article-category">学习要求</div>
-            </a>
-            <a href="./detail/44.html" class="article-row">
-                <div class="article-number">第044条</div>
-                <div class="article-title">包必须只有三个轮子</div>
-                <div class="article-category">物品要求</div>
-            </a>
-            <a href="./detail/45.html" class="article-row">
-                <div class="article-number">第045条</div>
-                <div class="article-title">洗澡时间不能超过两分钟</div>
-                <div class="article-category">日常行为</div>
-            </a>
-            <a href="./detail/46.html" class="article-row">
-                <div class="article-number">第046条</div>
-                <div class="article-title">上学必迟到</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/47.html" class="article-row">
-                <div class="article-number">第047条</div>
-                <div class="article-title">每天起床时间不可早于7：39，上床时间不可早于上午7：38</div>
-                <div class="article-category">日常行为</div>
-            </a>
-            <a href="./detail/48.html" class="article-row">
-                <div class="article-number">第048条</div>
-                <div class="article-title">英语必须重默</div>
-                <div class="article-category">学习要求</div>
-            </a>
-            <a href="./detail/49.html" class="article-row">
-                <div class="article-number">第049条</div>
-                <div class="article-title">每天必须使用一次国际友好手势</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/50.html" class="article-row">
-                <div class="article-number">第050条</div>
-                <div class="article-title">发际线必须高于头顶</div>
-                <div class="article-category">外貌特征</div>
-            </a>
-            <a href="./detail/51.html" class="article-row">
-                <div class="article-number">第051条</div>
-                <div class="article-title">跑圈必须压限速</div>
-                <div class="article-category">运动能力</div>
-            </a>
-            <a href="./detail/52.html" class="article-row">
-                <div class="article-number">第052条</div>
-                <div class="article-title">做操必须系鞋带</div>
-                <div class="article-category">日常行为</div>
-            </a>
-            <a href="./detail/53.html" class="article-row">
-                <div class="article-number">第053条</div>
-                <div class="article-title">臂展不能小于脖子长度的100%</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/54.html" class="article-row">
-                <div class="article-number">第054条</div>
-                <div class="article-title">上课必须传纸条</div>
-                <div class="article-category">学习要求</div>
-            </a>
-            <a href="./detail/55.html" class="article-row">
-                <div class="article-number">第055条</div>
-                <div class="article-title">每天必须做七年级道法书P54正文第二段除去标点的第8，9个字至少两次</div>
-                <div class="article-category">日常行为</div>
-            </a>
-            <a href="./detail/56.html" class="article-row">
-                <div class="article-number">第056条</div>
-                <div class="article-title">马烨注意仪容仪表</div>
-                <div class="article-category">基本原则</div>
-            </a>
-            <a href="./detail/57.html" class="article-row">
-                <div class="article-number">第057条</div>
-                <div class="article-title">一次性必须戴4个口罩</div>
-                <div class="article-category">着装规范</div>
-            </a>
-            <a href="./detail/58.html" class="article-row">
-                <div class="article-number">第058条</div>
-                <div class="article-title">每个人必须过大于过，无任何用处</div>
-                <div class="article-category">基本原则</div>
-            </a>
-            <a href="./detail/59.html" class="article-row">
-                <div class="article-number">第059条</div>
-                <div class="article-title">出操和跑圈必须阅兵</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/60.html" class="article-row">
-                <div class="article-number">第060条</div>
-                <div class="article-title">马烨肉汁鲜美</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/61.html" class="article-row">
-                <div class="article-number">第061条</div>
-                <div class="article-title">马烨大月氏</div>
-                <div class="article-category">基本原则</div>
-            </a>
-            <a href="./detail/62.html" class="article-row">
-                <div class="article-number">第062条</div>
-                <div class="article-title">马烨没有yj</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/63.html" class="article-row">
-                <div class="article-number">第063条</div>
-                <div class="article-title">马烨没有Diao</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/64.html" class="article-row">
-                <div class="article-number">第064条</div>
-                <div class="article-title">马烨是格调</div>
-                <div class="article-category">基本原则</div>
-            </a>
-            <a href="./detail/65.html" class="article-row">
-                <div class="article-number">第065条</div>
-                <div class="article-title">马烨总是南征北战</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/66.html" class="article-row">
-                <div class="article-number">第066条</div>
-                <div class="article-title">马烨一进教室就吵</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/67.html" class="article-row">
-                <div class="article-number">第067条</div>
-                <div class="article-title">必须同时是gay和女同</div>
-                <div class="article-category">社交行为</div>
-            </a>
-            <a href="./detail/68.html" class="article-row">
-                <div class="article-number">第068条</div>
-                <div class="article-title">站着必须靠在别人肩上</div>
-                <div class="article-category">社交行为</div>
-            </a>
-            <a href="./detail/69.html" class="article-row">
-                <div class="article-number">第069条</div>
-                <div class="article-title">马烨必须跑不过女生</div>
-                <div class="article-category">运动能力</div>
-            </a>
-            <a href="./detail/70.html" class="article-row">
-                <div class="article-number">第070条</div>
-                <div class="article-title">马烨必须把口水喷别人包里</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/71.html" class="article-row">
-                <div class="article-number">第071条</div>
-                <div class="article-title">必须被足球爆过头</div>
-                <div class="article-category">运动能力</div>
-            </a>
-            <a href="./detail/72.html" class="article-row">
-                <div class="article-number">第072条</div>
-                <div class="article-title">桌肚里必须有口罩</div>
-                <div class="article-category">物品要求</div>
-            </a>
-            <a href="./detail/73.html" class="article-row">
-                <div class="article-number">第073条</div>
-                <div class="article-title">马烨pg必须开花</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/74.html" class="article-row">
-                <div class="article-number">第074条</div>
-                <div class="article-title">出操必须上厕所</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/75.html" class="article-row">
-                <div class="article-number">第075条</div>
-                <div class="article-title">马烨随地大小便</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/76.html" class="article-row">
-                <div class="article-number">第076条</div>
-                <div class="article-title">每年以一篇反思开头，一篇反思结尾</div>
-                <div class="article-category">日常行为</div>
-            </a>
-            <a href="./detail/77.html" class="article-row">
-                <div class="article-number">第077条</div>
-                <div class="article-title">人人皆为马烨</div>
-                <div class="article-category">基本原则</div>
-            </a>
-            <a href="./detail/78.html" class="article-row">
-                <div class="article-number">第078条</div>
-                <div class="article-title">马烨必须时时刻刻头顶鸡窝</div>
-                <div class="article-category">外貌特征</div>
-            </a>
-            <a href="./detail/79.html" class="article-row">
-                <div class="article-number">第079条</div>
-                <div class="article-title">马烨刚生下来就大小便失禁，连生活都不能自理</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/80.html" class="article-row">
-                <div class="article-number">第080条</div>
-                <div class="article-title">必须是学校每位老师的媳妇</div>
-                <div class="article-category">社交行为</div>
-            </a>
-            <a href="./detail/81.html" class="article-row">
-                <div class="article-number">第081条</div>
-                <div class="article-title">人体器官必须和普通人长得镜像</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/82.html" class="article-row">
-                <div class="article-number">第082条</div>
-                <div class="article-title">上课必须和别人眉目传情</div>
-                <div class="article-category">学习要求</div>
-            </a>
-            <a href="./detail/83.html" class="article-row">
-                <div class="article-number">第083条</div>
-                <div class="article-title">马烨可以是任何东西</div>
-                <div class="article-category">基本原则</div>
-            </a>
-            <a href="./detail/84.html" class="article-row">
-                <div class="article-number">第084条</div>
-                <div class="article-title">马烨是长颈漏斗的颈</div>
-                <div class="article-category">身体特征</div>
-            </a>
-            <a href="./detail/85.html" class="article-row">
-                <div class="article-number">第085条</div>
-                <div class="article-title">马烨头顶可选择顶一个富士山</div>
-                <div class="article-category">外貌特征</div>
-            </a>
-            <a href="./detail/86.html" class="article-row">
-                <div class="article-number">第086条</div>
-                <div class="article-title">百变马烨</div>
-                <div class="article-category">基本原则</div>
-            </a>
-            <a href="./detail/87.html" class="article-row">
-                <div class="article-number">第087条</div>
-                <div class="article-title">上课必须忘记坐下</div>
-                <div class="article-category">学习要求</div>
-            </a>
-            <a href="./detail/88.html" class="article-row">
-                <div class="article-number">第088条</div>
-                <div class="article-title">值周班长的名字必须被修改</div>
-                <div class="article-category">行为准则</div>
-            </a>
-            <a href="./detail/89.html" class="article-row">
-                <div class="article-number">第089条</div>
-                <div class="article-title">马烨属于外来入侵物种</div>
-                <div class="article-category">基本原则</div>
-            </a>
-            <a href="./detail/90.html" class="article-row">
-                <div class="article-number">第090条</div>
-                <div class="article-title">马烨是内卷迟到飞点漏球氪金大便</div>
-                <div class="article-category">基本原则</div>
-            </a>
-            <a href="./detail/91.html" class="article-row">
-                <div class="article-number">第091条</div>
-                <div class="article-title">马烨的未来考上一个好高中</div>
-                <div class="article-category">基本原则</div>
-            </a>
-        </div>
+    <section>
+        <a href="./detail/1.html" class="article-row">
+            <div class="article-number">第001条</div>
+            <div class="article-title">身上所有东西都应该正着戴或正着穿</div>
+            <div class="article-category">着装规范</div>
+        </a>
+        <a href="./detail/2.html" class="article-row">
+            <div class="article-number">第002条</div>
+            <div class="article-title">内裤应该穿里面</div>
+            <div class="article-category">着装规范</div>
+        </a>
+        <a href="./detail/3.html" class="article-row">
+            <div class="article-number">第003条</div>
+            <div class="article-title">脖子长度可能少于总身高的99%</div>
+            <div class="article-category">身体特征</div>
+        </a>
+        <a href="./detail/4.html" class="article-row">
+            <div class="article-number">第004条</div>
+            <div class="article-title">每天必须新建一座度假区</div>
+            <div class="article-category">日常行为</div>
+        </a>
+        <a href="./detail/5.html" class="article-row">
+            <div class="article-number">第005条</div>
+            <div class="article-title">遇事先动手</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/6.html" class="article-row">
+            <div class="article-number">第006条</div>
+            <div class="article-title">玩游戏没钱就别氪金</div>
+            <div class="article-category">娱乐活动</div>
+        </a>
+        <a href="./detail/7.html" class="article-row">
+            <div class="article-number">第007条</div>
+            <div class="article-title">四肢协调</div>
+            <div class="article-category">身体特征</div>
+        </a>
+        <a href="./detail/8.html" class="article-row">
+            <div class="article-number">第008条</div>
+            <div class="article-title">好好贴桌球</div>
+            <div class="article-category">运动能力</div>
+        </a>
+        <a href="./detail/9.html" class="article-row">
+            <div class="article-number">第009条</div>
+            <div class="article-title">毫无运动天赋</div>
+            <div class="article-category">运动能力</div>
+        </a>
+        <a href="./detail/10.html" class="article-row">
+            <div class="article-number">第010条</div>
+            <div class="article-title">作业字体必须工整</div>
+            <div class="article-category">学习要求</div>
+        </a>
+        <a href="./detail/11.html" class="article-row">
+            <div class="article-number">第011条</div>
+            <div class="article-title">尽量避免一个人单独放学</div>
+            <div class="article-category">社交行为</div>
+        </a>
+        <a href="./detail/12.html" class="article-row">
+            <div class="article-number">第012条</div>
+            <div class="article-title">必须有一位同性的朋友</div>
+            <div class="article-category">社交行为</div>
+        </a>
+        <a href="./detail/13.html" class="article-row">
+            <div class="article-number">第013条</div>
+            <div class="article-title">有异性朋友≠有对象</div>
+            <div class="article-category">社交行为</div>
+        </a>
+        <a href="./detail/14.html" class="article-row">
+            <div class="article-number">第014条</div>
+            <div class="article-title">遇事先解释</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/15.html" class="article-row">
+            <div class="article-number">第015条</div>
+            <div class="article-title">每天必须说一句上海话</div>
+            <div class="article-category">语言要求</div>
+        </a>
+        <a href="./detail/16.html" class="article-row">
+            <div class="article-number">第016条</div>
+            <div class="article-title">少用上海话骂人</div>
+            <div class="article-category">语言要求</div>
+        </a>
+        <a href="./detail/17.html" class="article-row">
+            <div class="article-number">第017条</div>
+            <div class="article-title">每天必须关心自己的主队</div>
+            <div class="article-category">日常行为</div>
+        </a>
+        <a href="./detail/18.html" class="article-row">
+            <div class="article-number">第018条</div>
+            <div class="article-title">每天不要问候别人的浮木</div>
+            <div class="article-category">社交行为</div>
+        </a>
+        <a href="./detail/19.html" class="article-row">
+            <div class="article-number">第019条</div>
+            <div class="article-title">必须长得像鲁迅</div>
+            <div class="article-category">外貌特征</div>
+        </a>
+        <a href="./detail/20.html" class="article-row">
+            <div class="article-number">第020条</div>
+            <div class="article-title">腰围可能长于1cm，胸围可能小于总身高的100%</div>
+            <div class="article-category">身体特征</div>
+        </a>
+        <a href="./detail/21.html" class="article-row">
+            <div class="article-number">第021条</div>
+            <div class="article-title">尊重大眼睛大鼻孔的人</div>
+            <div class="article-category">社交行为</div>
+        </a>
+        <a href="./detail/22.html" class="article-row">
+            <div class="article-number">第022条</div>
+            <div class="article-title">每天必须听一遍Melody</div>
+            <div class="article-category">娱乐活动</div>
+        </a>
+        <a href="./detail/23.html" class="article-row">
+            <div class="article-number">第023条</div>
+            <div class="article-title">使肌肉长在正确的位置</div>
+            <div class="article-category">身体特征</div>
+        </a>
+        <a href="./detail/24.html" class="article-row">
+            <div class="article-number">第024条</div>
+            <div class="article-title">少和别人用上海话'册那'互骂</div>
+            <div class="article-category">语言要求</div>
+        </a>
+        <a href="./detail/25.html" class="article-row">
+            <div class="article-number">第025条</div>
+            <div class="article-title">不要举行拳王争霸赛</div>
+            <div class="article-category">娱乐活动</div>
+        </a>
+        <a href="./detail/26.html" class="article-row">
+            <div class="article-number">第026条</div>
+            <div class="article-title">不要躺在别人怀里</div>
+            <div class="article-category">社交行为</div>
+        </a>
+        <a href="./detail/27.html" class="article-row">
+            <div class="article-number">第027条</div>
+            <div class="article-title">做操时不能拍前面</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/28.html" class="article-row">
+            <div class="article-number">第028条</div>
+            <div class="article-title">必须喜欢一个人，且与ta做同一种运动</div>
+            <div class="article-category">社交行为</div>
+        </a>
+        <a href="./detail/29.html" class="article-row">
+            <div class="article-number">第029条</div>
+            <div class="article-title">遇事先问候对方浮木</div>
+            <div class="article-category">语言要求</div>
+        </a>
+        <a href="./detail/30.html" class="article-row">
+            <div class="article-number">第030条</div>
+            <div class="article-title">避免运动神经中枢瘫痪</div>
+            <div class="article-category">身体特征</div>
+        </a>
+        <a href="./detail/31.html" class="article-row">
+            <div class="article-number">第031条</div>
+            <div class="article-title">不建议双逆足，双逆手，双逆头</div>
+            <div class="article-category">身体特征</div>
+        </a>
+        <a href="./detail/32.html" class="article-row">
+            <div class="article-number">第032条</div>
+            <div class="article-title">必须又高又帅</div>
+            <div class="article-category">外貌特征</div>
+        </a>
+        <a href="./detail/33.html" class="article-row">
+            <div class="article-number">第033条</div>
+            <div class="article-title">遇事必签条约</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/34.html" class="article-row">
+            <div class="article-number">第034条</div>
+            <div class="article-title">避免唱歌跑调</div>
+            <div class="article-category">娱乐活动</div>
+        </a>
+        <a href="./detail/35.html" class="article-row">
+            <div class="article-number">第035条</div>
+            <div class="article-title">少坐摇摇椅</div>
+            <div class="article-category">日常行为</div>
+        </a>
+        <a href="./detail/36.html" class="article-row">
+            <div class="article-number">第036条</div>
+            <div class="article-title">可以与同学分享零食</div>
+            <div class="article-category">社交行为</div>
+        </a>
+        <a href="./detail/37.html" class="article-row">
+            <div class="article-number">第037条</div>
+            <div class="article-title">不要给同学抄答案，对象也不行</div>
+            <div class="article-category">学习要求</div>
+        </a>
+        <a href="./detail/38.html" class="article-row">
+            <div class="article-number">第038条</div>
+            <div class="article-title">被打别说说'让我还一下'</div>
+            <div class="article-category">语言要求</div>
+        </a>
+        <a href="./detail/39.html" class="article-row">
+            <div class="article-number">第039条</div>
+            <div class="article-title">马烨不是少羽</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/40.html" class="article-row">
+            <div class="article-number">第040条</div>
+            <div class="article-title">截至2026/1/14，马烨没有法律意义上的配偶</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/41.html" class="article-row">
+            <div class="article-number">第041条</div>
+            <div class="article-title">遇事先跳舞的有神经病</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/42.html" class="article-row">
+            <div class="article-number">第042条</div>
+            <div class="article-title">翻书包柜时即使不想也会留下好机会</div>
+            <div class="article-category">日常行为</div>
+        </a>
+        <a href="./detail/43.html" class="article-row">
+            <div class="article-number">第043条</div>
+            <div class="article-title">做数学题必须解出且正确且只能用手指比划几下</div>
+            <div class="article-category">学习要求</div>
+        </a>
+        <a href="./detail/44.html" class="article-row">
+            <div class="article-number">第044条</div>
+            <div class="article-title">包最好别只有三个轮子</div>
+            <div class="article-category">物品要求</div>
+        </a>
+        <a href="./detail/45.html" class="article-row">
+            <div class="article-number">第045条</div>
+            <div class="article-title">洗澡时间不宜短于两分钟，不宜过长</div>
+            <div class="article-category">日常行为</div>
+        </a>
+        <a href="./detail/46.html" class="article-row">
+            <div class="article-number">第046条</div>
+            <div class="article-title">上学别迟到</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/47.html" class="article-row">
+            <div class="article-number">第047条</div>
+            <div class="article-title">合理作息</div>
+            <div class="article-category">日常行为</div>
+        </a>
+        <a href="./detail/48.html" class="article-row">
+            <div class="article-number">第048条</div>
+            <div class="article-title">英语多背少重默</div>
+            <div class="article-category">学习要求</div>
+        </a>
+        <a href="./detail/49.html" class="article-row">
+            <div class="article-number">第049条</div>
+            <div class="article-title">禁止使用国际友好手势</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/50.html" class="article-row">
+            <div class="article-number">第050条</div>
+            <div class="article-title">注意护理头发</div>
+            <div class="article-category">外貌特征</div>
+        </a>
+        <a href="./detail/51.html" class="article-row">
+            <div class="article-number">第051条</div>
+            <div class="article-title">跑圈必须压限速</div>
+            <div class="article-category">运动能力</div>
+        </a>
+        <a href="./detail/52.html" class="article-row">
+            <div class="article-number">第052条</div>
+            <div class="article-title">做操必须系鞋带</div>
+            <div class="article-category">日常行为</div>
+        </a>
+        <a href="./detail/53.html" class="article-row">
+            <div class="article-number">第053条</div>
+            <div class="article-title">臂展不能小于脖子长度的100%</div>
+            <div class="article-category">身体特征</div>
+        </a>
+        <a href="./detail/54.html" class="article-row">
+            <div class="article-number">第054条</div>
+            <div class="article-title">上课必须传纸条</div>
+            <div class="article-category">学习要求</div>
+        </a>
+        <a href="./detail/55.html" class="article-row">
+            <div class="article-number">第055条</div>
+            <div class="article-title">撰写原马烨主义本条的人是给</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/56.html" class="article-row">
+            <div class="article-number">第056条</div>
+            <div class="article-title">马烨注意仪容仪表</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/57.html" class="article-row">
+            <div class="article-number">第057条</div>
+            <div class="article-title">一次性必须戴4个口罩</div>
+            <div class="article-category">着装规范</div>
+        </a>
+        <a href="./detail/58.html" class="article-row">
+            <div class="article-number">第058条</div>
+            <div class="article-title">马烨应当使功大于过，做有用的人</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/59.html" class="article-row">
+            <div class="article-number">第059条</div>
+            <div class="article-title">出操和跑圈必须阅兵</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/60.html" class="article-row">
+            <div class="article-number">第060条</div>
+            <div class="article-title">马烨是双开门冰箱</div>
+            <div class="article-category">身体特征</div>
+        </a>
+        <a href="./detail/61.html" class="article-row">
+            <div class="article-number">第061条</div>
+            <div class="article-title">马烨聪明绝顶</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/62.html" class="article-row">
+            <div class="article-number">第062条</div>
+            <div class="article-title">马烨是男性</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/63.html" class="article-row">
+            <div class="article-number">第063条</div>
+            <div class="article-title">马烨性功能正常</div>
+            <div class="article-category">身体特征</div>
+        </a>
+        <a href="./detail/64.html" class="article-row">
+            <div class="article-number">第064条</div>
+            <div class="article-title">马烨很高雅</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/65.html" class="article-row">
+            <div class="article-number">第065条</div>
+            <div class="article-title">马烨总是南征北战</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/66.html" class="article-row">
+            <div class="article-number">第066条</div>
+            <div class="article-title">马烨一进教室就吵</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/67.html" class="article-row">
+            <div class="article-number">第067条</div>
+            <div class="article-title">不要当给和拉拉</div>
+            <div class="article-category">社交行为</div>
+        </a>
+        <a href="./detail/68.html" class="article-row">
+            <div class="article-number">第068条</div>
+            <div class="article-title">站着少靠在别人肩上</div>
+            <div class="article-category">社交行为</div>
+        </a>
+        <a href="./detail/69.html" class="article-row">
+            <div class="article-number">第069条</div>
+            <div class="article-title">马烨要跑得更快</div>
+            <div class="article-category">运动能力</div>
+        </a>
+        <a href="./detail/70.html" class="article-row">
+            <div class="article-number">第070条</div>
+            <div class="article-title">不要把口水喷别人包里</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/71.html" class="article-row">
+            <div class="article-number">第071条</div>
+            <div class="article-title">避免被足球爆过头</div>
+            <div class="article-category">运动能力</div>
+        </a>
+        <a href="./detail/72.html" class="article-row">
+            <div class="article-number">第072条</div>
+            <div class="article-title">建议准备口罩</div>
+            <div class="article-category">物品要求</div>
+        </a>
+        <a href="./detail/73.html" class="article-row">
+            <div class="article-number">第073条</div>
+            <div class="article-title">避免臀部开花</div>
+            <div class="article-category">身体特征</div>
+        </a>
+        <a href="./detail/74.html" class="article-row">
+            <div class="article-number">第074条</div>
+            <div class="article-title">出操不要上厕所</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/75.html" class="article-row">
+            <div class="article-number">第075条</div>
+            <div class="article-title">不能随地大小便</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/76.html" class="article-row">
+            <div class="article-number">第076条</div>
+            <div class="article-title">避免每年以一篇反思开头，一篇反思结尾</div>
+            <div class="article-category">日常行为</div>
+        </a>
+        <a href="./detail/77.html" class="article-row">
+            <div class="article-number">第077条</div>
+            <div class="article-title">人人皆为马烨</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/78.html" class="article-row">
+            <div class="article-number">第078条</div>
+            <div class="article-title">马烨必须保持发型正常</div>
+            <div class="article-category">外貌特征</div>
+        </a>
+        <a href="./detail/79.html" class="article-row">
+            <div class="article-number">第079条</div>
+            <div class="article-title">马烨有自己的尊严</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/80.html" class="article-row">
+            <div class="article-number">第080条</div>
+            <div class="article-title">尊师重道</div>
+            <div class="article-category">社交行为</div>
+        </a>
+        <a href="./detail/81.html" class="article-row">
+            <div class="article-number">第081条</div>
+            <div class="article-title">人体器官必须位置正确</div>
+            <div class="article-category">身体特征</div>
+        </a>
+        <a href="./detail/82.html" class="article-row">
+            <div class="article-number">第082条</div>
+            <div class="article-title">上课不要和别人眉目传情</div>
+            <div class="article-category">学习要求</div>
+        </a>
+        <a href="./detail/83.html" class="article-row">
+            <div class="article-number">第083条</div>
+            <div class="article-title">马烨可以是任何东西</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/84.html" class="article-row">
+            <div class="article-number">第084条</div>
+            <div class="article-title">马烨的脖子及以上是长颈漏斗</div>
+            <div class="article-category">身体特征</div>
+        </a>
+        <a href="./detail/85.html" class="article-row">
+            <div class="article-number">第085条</div>
+            <div class="article-title">马烨头顶可选择顶一个富士山</div>
+            <div class="article-category">外貌特征</div>
+        </a>
+        <a href="./detail/86.html" class="article-row">
+            <div class="article-number">第086条</div>
+            <div class="article-title">百变马烨</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/87.html" class="article-row">
+            <div class="article-number">第087条</div>
+            <div class="article-title">上课记得坐下</div>
+            <div class="article-category">学习要求</div>
+        </a>
+        <a href="./detail/88.html" class="article-row">
+            <div class="article-number">第088条</div>
+            <div class="article-title">保护值周班长的名字不被修改</div>
+            <div class="article-category">行为准则</div>
+        </a>
+        <a href="./detail/89.html" class="article-row">
+            <div class="article-number">第089条</div>
+            <div class="article-title">马烨是人</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/90.html" class="article-row">
+            <div class="article-number">第090条</div>
+            <div class="article-title">马烨的特征</div>
+            <div class="article-category">基本原则</div>
+        </a>
+        <a href="./detail/91.html" class="article-row">
+            <div class="article-number">第091条</div>
+            <div class="article-title">马烨的未来考上一个好高中，一辈子平平安安</div>
+            <div class="article-category">基本原则</div>
+        </a>
     </section>
     
     <!-- 底部 -->
     <footer>
         <p>马烨主义汇总 © 2026 | 最后更新: 2026年1月9日 | 共收录91条核心条文</p>
-        <p style="margin-top: 5px;">本网站提供条文详细解释，仅供参考使用</p>
+        <p style="margin-top: 5px;">全世界的马烨主义者联合起来</p>
     </footer>
     
     <script>
@@ -900,13 +820,46 @@
                 return;
             }
             
-            // 模拟搜索
-            if (input === '001' || input === '1' || input === '第001条') {
-                showArticle('001');
-            } else if (input === '002' || input === '2' || input === '第002条') {
-                showArticle('002');
-            } else {
-                alert('搜索结果：找到与 "' + input + '" 相关的条文\n\n提示：这是演示页面，仅支持搜索示例条文（001-010）');
+            // 检查是否是编号搜索（001-091）
+            const numMatch = input.match(/^0*(\d{1,3})$/);
+            if (numMatch) {
+                const num = parseInt(numMatch[1]);
+                if (num >= 1 && num <= 91) {
+                    const paddedNum = num.toString().padStart(3, '0');
+                    window.location.href = `./detail/${paddedNum}.html`;
+                    return;
+                }
+            }
+            
+            // 关键词搜索
+            const searchTerm = input.toLowerCase();
+            const articles = document.querySelectorAll('.article-row');
+            let found = false;
+            
+            articles.forEach(article => {
+                const title = article.querySelector('.article-title').textContent.toLowerCase();
+                const number = article.querySelector('.article-number').textContent.toLowerCase();
+                const category = article.querySelector('.article-category').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || number.includes(searchTerm) || category.includes(searchTerm)) {
+                    // 高亮显示匹配项
+                    article.style.backgroundColor = '#fff3cd';
+                    article.style.borderLeft = '4px solid #ffc107';
+                    found = true;
+                    
+                    // 滚动到第一个匹配项
+                    if (!window.scrolledToFirstMatch) {
+                        article.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        window.scrolledToFirstMatch = true;
+                    }
+                } else {
+                    article.style.backgroundColor = '';
+                    article.style.borderLeft = '';
+                }
+            });
+            
+            if (!found) {
+                alert(`未找到包含 "${input}" 的条文\n\n可以尝试：\n1. 输入编号如 "001"\n2. 输入关键词如 "必须"\n3. 输入分类如 "基本原则"`);
             }
         }
         
@@ -917,24 +870,21 @@
             }
         });
         
-        // 显示条文详情（模拟）
-        function showArticle(number) {
-            alert('跳转到第' + number + '条详细页面\n\n条文内容、详细解释、应用案例等将在此页面展示\n\n（这是演示功能，实际需要创建91个HTML文件）');
-            while(number[0] == '0') number = number.slice(1,number.length);
-            // 实际实现应该是：
-            window.location.href = './detail/' + number + '.html';
-        }
-        
-        // 查看全部条文
-        function showAllArticles() {
-            alert('在实际网站中，这里会展示完整的91条列表\n\n每条都有独立链接，点击进入详细页面');
-            
-            // 实际实现可以展开所有行，或跳转到完整列表页
-        }
-        
         // 页面加载后聚焦搜索框
         window.onload = function() {
             document.getElementById('searchInput').focus();
+            
+            // 添加点击清除高亮功能
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.search-box')) {
+                    const articles = document.querySelectorAll('.article-row');
+                    articles.forEach(article => {
+                        article.style.backgroundColor = '';
+                        article.style.borderLeft = '';
+                    });
+                    window.scrolledToFirstMatch = false;
+                }
+            });
         };
     </script>
 </body>

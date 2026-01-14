@@ -1,0 +1,6 @@
+﻿# _config.yml
+title: 马烨主义
+description: 马烨主义条文汇编系统
+baseurl: "/马烨主义"  # 你的仓库名
+url: "https://你的用户名.github.io"
+theme: jekyll-theme-minimal
