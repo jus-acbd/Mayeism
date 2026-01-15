@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>重定向到首页</title>
+    <script>
+        // 获取当前路径
+        const path = window.location.pathname;
+        const repoName = '马烨主义'; // 你的仓库名
+        
+        // 如果是访问根目录，跳转到首页
+        if (path === '/' + repoName + '/' || path === '/' + repoName) {
+            window.location.href = '/' + repoName + '/index_revised.html';
+        }
+        // 如果是访问详情页，重写路径
+        else if (path.includes('/detail/')) {
+            const articleNum = path.match(/detail\/(\d+)\.html/);
+            if (articleNum) {
+                window.location.href = '/' + repoName + '/detail/' + articleNum[1] + '.html';
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>正在重定向...</p>
+</body>
+</html>

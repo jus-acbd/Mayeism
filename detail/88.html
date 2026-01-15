@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>马烨主义（修订） 第{display_id}条 - {title}</title>
+    <link rel="icon" href="./assets/logo.png" type="image/svg+xml">
+    <title>马烨主义（修订） 第088条 - 保护值周班长的名字不被修改</title>
     <style>
         /* 基础重置 */
         * {
@@ -15,7 +16,7 @@
             background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
-            margin: 0;
+            margin: 30;
         }
         
         /* 导航栏 */
@@ -274,23 +275,32 @@
                 font-size: 0.9rem;
             }
         }
+        /*
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        */
     </style>
 </head>
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar">
-        <a href="../index_revised.html" class="nav-brand">马烨主义（修订版）</a>
-        <div class="nav-links">
-            <a href="../index.html">首页</a>
-            <a href="../index.html">原始版本</a>
+    <header>
+        <nav class="navbar">
+            <a href="../index.html" class="nav-brand"><img src="/assets/logo.png" width=40px>  马烨主义</a>
+            <p><strong>全世界的马烨主义者联合起来</strong></p>
+            <div class="nav-links">
+                <a href="../index.html">首页</a>
+            </div>
+        </nav>
+        <!-- 面包屑导航 -->
+        <div class="breadcrumb">
+            <a href="../index.html">首页</a> &gt; 
+            <span>第088条</span>
         </div>
-    </nav>
+    </header>
     
-    <!-- 面包屑导航 -->
-    <div class="breadcrumb">
-        <a href="../index.html">首页</a> &gt; 
-        <span>第088条</span>
-    </div>
+    
     
     <!-- 快速跳转 -->
     <div class="article-container">
@@ -328,9 +338,9 @@
         
         <!-- 导航按钮 -->
         <div class="nav-buttons">
-            <a href="87.html" class="nav-btn">← 上一条</a>
+            <button class="nav-btn" onclick="changeArticle(87)">←上一条</button>
             <a href="../index.html" class="nav-btn">返回列表</a>
-            <a href="89.html" class="nav-btn">下一条→</a>
+            <button class="nav-btn" onclick="changeArticle(89)">下一条→</button>
         </div>
     </div>
     
@@ -342,23 +352,45 @@
     </footer>
     
     <script>
+        window.onload = function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
         // 快速跳转功能
         function jumpToArticle() {
             const input = document.getElementById('jumpInput');
             let num = parseInt(input.value);
             
             if (isNaN(num) || num < 1 || num > 91) {
-                alert('请输入有效的条文编号 (1-91)');
+                alert('请输入有效的编号 (1-91)');
                 input.focus();
                 return;
             }
             
             // 跳转到对应条文
             if (num !== 88) {
-                window.location.href = num + '.html';
+                smoothNavigate(num + '.html');
             } else {
                 alert('当前已经是第' + num + '条');
             }
+        }
+
+        function changeArticle(num) {
+            // 跳转到对应条文
+            if (num !== 88) {
+                smoothNavigate(num + '.html');
+            } else {
+                alert('当前已经是第' + num + '条');
+            }
+        }
+
+        function smoothNavigate(url) {
+            // 先添加淡出效果
+            //document.body.style.opacity = '0';
+            //document.body.style.transition = 'opacity 0.2s ease';
+            
+            setTimeout(() => {
+                window.location.href = url;
+            }, 200);
         }
         
         // 监听输入框回车键
