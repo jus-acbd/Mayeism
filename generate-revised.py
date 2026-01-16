@@ -25,7 +25,6 @@ detail_template = '''<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="/Mayeism">
     <link rel="icon" href="../assets/logo.png" type="image/svg+xml">
     <title>马烨主义（修订） 第{display_id}条 - {title}</title>
     <style>
