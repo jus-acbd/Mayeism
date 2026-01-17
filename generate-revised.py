@@ -25,7 +25,7 @@ detail_template = '''<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../assets/logo.png" type="image/svg+xml">
+    <link rel="icon" href="./assets/logo.png" type="image/svg+xml">
     <title>马烨主义（修订） 第{display_id}条 - {title}</title>
     <style>
         /* 基础重置 */
@@ -309,15 +309,15 @@ detail_template = '''<!DOCTYPE html>
     <!-- 导航栏 -->
     <header>
         <nav class="navbar">
-            <a href="../index.html" class="nav-brand"><img src="../assets/logo.png" width=40px>  马烨主义</a>
+            <a href="./index.html" class="nav-brand"><img src="./assets/logo.png" width=40px>  马烨主义</a>
             <p><strong>全世界的马烨主义者联合起来</strong></p>
             <div class="nav-links">
-                <a href="../index.html">首页</a>
+                <a href="./index.html">首页</a>
             </div>
         </nav>
         <!-- 面包屑导航 -->
         <div class="breadcrumb">
-            <a href="../index.html">首页</a> &gt; 
+            <a href="./index.html">首页</a> &gt; 
             <span>第{display_id}条</span>
         </div>
     </header>
@@ -548,17 +548,3 @@ for i, article in enumerate(articles):
         print(f"  已生成 {i+1}/91 个详情页")
 
 print("✅ 详情页生成完成！")
-
-# 6. 生成修订版首页
-print("\n正在生成修订版首页...")
-
-# 读取HTML列表
-try:
-    with open('full_list_revised.html', 'r', encoding='utf-8') as f:
-        full_list_html = f.read()
-except FileNotFoundError:
-    print("❌ 找不到 full_list_revised.html 文件")
-    print("请先运行 generate_revised_data_final.py")
-    exit(1)
-
-print("✅ 修订版首页生成完成！")
